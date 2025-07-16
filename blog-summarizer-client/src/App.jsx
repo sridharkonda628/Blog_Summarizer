@@ -10,6 +10,15 @@ function App() {
   return (
     <div className="min-h-screen bg-base-100 text-base-content">
       <Navbar />
+      <select
+            className="select select-sm"
+          onChange={(e) => document.documentElement.setAttribute("data-theme", e.target.value)}>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="cupcake">Cupcake</option>
+            <option value="business">Business</option>
+      </select>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -21,3 +30,6 @@ function App() {
 }
 
 export default App;
+
+
+

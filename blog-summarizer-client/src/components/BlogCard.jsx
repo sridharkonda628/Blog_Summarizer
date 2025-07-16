@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { FaSpinner, FaRegCopy } from "react-icons/fa";
 import axios from "axios";
 import React from "react";
+import toast from "react-hot-toast";
 
-export default function BlogCard({ blog }) {
+const BlogCard = ({ blog }) => {
   const [summary, setSummary] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -13,30 +15,55 @@ export default function BlogCard({ blog }) {
         content: blog.content,
       });
       setSummary(res.data.summary);
-      console.log(res.data);
     } catch (err) {
       console.error("Error summarizing blog:", err);
+      toast.error("Summarization failed. Please try again.");
+
     } finally {
       setLoading(false);
     }
   };
 
+  const copySummary = () => {
+    navigator.clipboard.writeText(summary);
+  };
+
   return (
-    <div className="card bg-white shadow-md p-4 border border-base-300">
-      <h3 className="text-xl font-bold">{blog.title}</h3>
-      <p className="text-sm text-gray-600 mb-2">Posted on: {new Date(blog.createdAt).toLocaleDateString()}</p>
-      <p className="text-gray-800 mb-4">{blog.content}</p>
+    <div className="card bg-base-100 shadow-lg border border-base-300 mb-5">
+      <div className="card-body">
+        <h2 className="card-title text-lg">{blog.title}</h2>
+        <p className="text-sm text-gray-700">{blog.content}</p>
 
-      <button onClick={handleSummarize} className="btn btn-outline btn-sm mb-2">
-        {loading ? "Summarizing..." : "Summarize with AI"}
-      </button>
+        <div className="divider">AI Summary</div>
 
-      {summary && (
-        <div className="mt-2 p-3 bg-base-200 rounded">
-          <strong>Summary:</strong>
-          <p>{summary}</p>
-        </div>
-      )}
+        <button
+          onClick={handleSummarize}
+          disabled={loading}
+          className="btn btn-outline btn-sm"
+        >
+          {loading ? (
+            <span className="flex items-center gap-2">
+              <FaSpinner className="animate-spin" /> Summarizing...
+            </span>
+          ) : (
+            "Summarize with AI"
+          )}
+        </button>
+
+        {summary && (
+          <div className="mt-4 p-3 bg-base-200 rounded text-sm">
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-semibold">Summary:</span>
+              <button onClick={copySummary} className="btn btn-xs btn-outline">
+                <FaRegCopy /> Copy
+              </button>
+            </div>
+            <p>{summary}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+};
+
+export default BlogCard;

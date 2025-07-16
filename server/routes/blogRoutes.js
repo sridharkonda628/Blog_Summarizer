@@ -10,3 +10,5 @@ router.get("/", getBlogs);
 router.post("/", createBlog);
 
 export default router;
+
+
