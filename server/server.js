@@ -1,4 +1,5 @@
 // api/index.js
+// server/server.js
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -12,21 +13,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// optional root endpoint to avoid 404
 app.get("/", (req, res) => res.send("API is working!"));
 
-// mount routes
 app.use("/api/blogs", blogRoutes);
 app.use("/api/ai", aiRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connected to MongoDB");
-    app.listen(5000, () => console.log("Server running locally on port 5000"));
   })
-  .catch(err => console.error("MongoDB connection error:", err));
+  .catch((err) => console.error("MongoDB connection error:", err));
 
-export default app;  // for Vercel
+export default app; // ✅ Vercel needs this
+ // for Vercel
 
 
 // // import express from "express";
