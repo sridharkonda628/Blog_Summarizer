@@ -4,6 +4,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import serverless from "serverless-http"; // 👈 NEW
+import { createServerlessExpressHandler } from '@vendia/serverless-express';
+
+
 
 import blogRoutes from "./routes/blogRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
@@ -23,7 +26,8 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error("MongoDB connection error:", err));
 
 // 👇 Export wrapped Express handler
-export const handler = serverless(app);
+// export const handler = serverless(app);
+export default createServerlessExpressHandler(app);
 // ✅ Vercel needs this
  // for Vercel
 
