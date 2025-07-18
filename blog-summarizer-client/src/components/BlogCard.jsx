@@ -12,7 +12,7 @@ const BlogCard = ({ blog }) => {
     setLoading(true);
     try {
       // const res = await axios.post("http://localhost:5000/api/ai", {
-      const res = await axios.post("https://blog-summarizer-kohl.vercel.app/api/blogs", {
+      const res = await axios.post("https://blog-summarizer-kohl.vercel.app/api/summarize", {
         content: blog.content,
       });
       setSummary(res.data.summary);
