@@ -45,7 +45,7 @@ const PORT = process.env.PORT || 5000;
 // Middlewares
 const allowedOrigins = [
   'http://localhost:5173', // for local dev
-  'https://blog-summarizer-n5hn.vercel.app/' // replace with your actual frontend Vercel domain
+  'https://blog-summarizer-n5hn.vercel.app/dashboard' // replace with your actual frontend Vercel domain
 ];
 
 app.use(cors({
