@@ -11,7 +11,8 @@ const BlogCard = ({ blog }) => {
   const handleSummarize = async () => {
     setLoading(true);
     try {
-      const res = await axios.post("https://blog-summarizer-b8zdup7go-sridhars-projects-fd687d12.vercel.app/api/ai", {
+      // const res = await axios.post("http://localhost:5000/api/ai", {
+      const res = await axios.post("https://blog-summarizer-kohl.vercel.app/api/blogs", {
         content: blog.content,
       });
       setSummary(res.data.summary);
