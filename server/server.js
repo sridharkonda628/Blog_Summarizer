@@ -43,7 +43,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middlewares
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173", 
+    "https://blog-summarizer-n5hn-hae9aucmv-sridhars-projects-fd687d12.vercel.app/" // Replace with your deployed frontend URL
+  ],
+  credentials: true,
+}));
 app.use(express.json());
 
 // Routes
