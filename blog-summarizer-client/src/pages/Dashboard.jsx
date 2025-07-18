@@ -19,6 +19,7 @@ export default function Dashboard() {
 
   const handleNewBlog = (newBlog) => {
     setBlogs((prev) => [newBlog, ...prev]);
+    
   };
 
   useEffect(() => {

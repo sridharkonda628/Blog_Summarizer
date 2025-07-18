@@ -3,7 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import React from "react";
 
-const BlogForm = ({ onBlogAdded }) => {
+const BlogForm = ({ onBlogCreated }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ const BlogForm = ({ onBlogAdded }) => {
 
       // ✅ Confirm backend responded
       if (newBlog && newBlog._id) {
-        onBlogAdded(newBlog); // Add to list
+        onBlogCreated(newBlog); // Add to list
         toast.success("Blog posted successfully!");
         setTitle("");
         setContent("");
@@ -38,6 +38,7 @@ const BlogForm = ({ onBlogAdded }) => {
       }
 
     } catch (err) {
+      
       console.error("Blog post error:", err.message);
       toast.error("Failed to post blog. Try again.");
     } finally {
