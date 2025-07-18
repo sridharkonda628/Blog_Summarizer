@@ -13,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("API is working!"));
+
 app.use("/api/blogs", blogRoutes);
 app.use("/api/ai", aiRoutes);
 
