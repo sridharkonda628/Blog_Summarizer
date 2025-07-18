@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 
 export default defineConfig({
-  base: '/Blog_Summarizer/',
+  base: '/',
   plugins: [react(),
     tailwindcss(),
   ],
