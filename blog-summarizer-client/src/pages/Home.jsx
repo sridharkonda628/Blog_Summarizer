@@ -9,7 +9,7 @@ const Home = () => {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/blogs").then((res) => {
+    axios.get("blog-summarizer-kohl.vercel.app/api/blogs").then((res) => {
       setBlogs(res.data);
     });
   }, []);
