@@ -15,7 +15,7 @@
       "src": "/api/ai.*",
       "dest": "/server.js"
     },{
-      "src": "/api/.*",
+      "src": "/api/(.*)",
       "dest": "/server.js"
     }
   ]

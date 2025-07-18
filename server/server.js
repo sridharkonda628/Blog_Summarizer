@@ -43,14 +43,18 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middlewares
-// app.use(cors());
+const allowedOrigins = [
+  'http://localhost:5173', // for local dev
+  'https://blog-summarizer-n5hn.vercel.app/' // replace with your actual frontend Vercel domain
+];
+
 app.use(cors({
-  origin: [
-    "http://localhost:5173", 
-    "https://blog-summarizer-n5hn-hae9aucmv-sridhars-projects-fd687d12.vercel.app/" // Replace with your deployed frontend URL
-  ],
-  credentials: true,
+  origin: allowedOrigins,
+  methods: ['GET', 'POST'],
+  credentials: true
 }));
+
+
 app.use(express.json());
 
 // Routes
