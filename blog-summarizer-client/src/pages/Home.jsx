@@ -29,7 +29,7 @@ const Home = () => {
 
   return (
     <div className="p-5 max-w-5xl mx-auto">
-      <BlogForm onBlogAdded={handleNewBlog} />
+      <BlogForm onBlogCreated={handleNewBlog} />
 
       <div className="mb-4">
         <input

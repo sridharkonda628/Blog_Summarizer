@@ -30,6 +30,7 @@ const BlogForm = ({ onBlogCreated }) => {
       // ✅ Confirm backend responded
       if (newBlog && newBlog._id) {
         onBlogCreated(newBlog); // Add to list
+
         toast.success("Blog posted successfully!");
         setTitle("");
         setContent("");
